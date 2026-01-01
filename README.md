@@ -1,4 +1,4 @@
-# CliniScribe AI
+# ReasonMed
 
 A medical clinical documentation assistant that helps doctors write clinical notes by retrieving similar cases and diagnostic reasoning patterns from a medical dataset using RAG (Retrieval-Augmented Generation).
 
