@@ -24,7 +24,7 @@ def setup_vectorstore(limit: int = None, batch_size: int = 100):
         batch_size: Batch size for embedding generation
     """
     print("=" * 60)
-    print("CliniScribe AI - Vector Store Setup")
+    print("ReasonMed - Vector Store Setup")
     print("=" * 60)
     
     print("\nStep 1: Loading dataset from HuggingFace...")

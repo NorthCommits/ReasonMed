@@ -1,2 +1,2 @@
-# CliniScribe AI - Source Package
+# ReasonMed - Source Package
 

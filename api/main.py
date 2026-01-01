@@ -1,5 +1,5 @@
 """
-FastAPI endpoints for CliniScribe AI.
+FastAPI endpoints for ReasonMed.
 """
 
 from fastapi import FastAPI, HTTPException
@@ -15,7 +15,7 @@ from src.rag_pipeline import RAGPipeline
 from src.vectorstore import VectorStore
 
 app = FastAPI(
-    title="CliniScribe AI API",
+    title="ReasonMed API",
     description="Medical clinical documentation assistant API",
     version="1.0.0"
 )
@@ -67,7 +67,7 @@ class QueryResponse(BaseModel):
 async def root():
     """Root endpoint."""
     return {
-        "message": "CliniScribe AI API",
+        "message": "ReasonMed API",
         "version": "1.0.0",
         "endpoints": {
             "/query": "POST - Query the RAG pipeline",

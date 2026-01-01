@@ -1,5 +1,5 @@
 """
-Streamlit UI for CliniScribe AI.
+Streamlit UI for ReasonMed.
 """
 
 import streamlit as st
@@ -13,7 +13,7 @@ from src.rag_pipeline import RAGPipeline
 from src.vectorstore import VectorStore
 
 st.set_page_config(
-    page_title="CliniScribe AI",
+    page_title="ReasonMed",
     page_icon="🏥",
     layout="wide"
 )
@@ -30,7 +30,7 @@ def load_vector_store():
 
 def main():
     """Main Streamlit application."""
-    st.title("🏥 CliniScribe AI")
+    st.title("🏥 ReasonMed")
     st.markdown("### Medical Clinical Documentation Assistant")
     st.markdown("---")
     
@@ -120,9 +120,9 @@ def main():
             st.warning("Please enter a patient case description.")
     
     with tab2:
-        st.header("About CliniScribe AI")
+        st.header("About ReasonMed")
         st.markdown("""
-        CliniScribe AI is a medical clinical documentation assistant that helps doctors 
+        ReasonMed is a medical clinical documentation assistant that helps doctors 
         write clinical notes by retrieving similar cases and diagnostic reasoning patterns 
         from a medical dataset.
         

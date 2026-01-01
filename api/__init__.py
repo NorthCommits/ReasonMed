@@ -1,2 +1,2 @@
-# CliniScribe AI - API Package
+# ReasonMed - API Package
 

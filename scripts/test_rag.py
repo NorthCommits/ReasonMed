@@ -16,7 +16,7 @@ from src.vectorstore import VectorStore
 def test_rag():
     """Test the RAG pipeline with sample queries."""
     print("=" * 60)
-    print("CliniScribe AI - RAG Pipeline Test")
+    print("ReasonMed - RAG Pipeline Test")
     print("=" * 60)
     
     vector_store = VectorStore()

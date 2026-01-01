@@ -1,7 +1,7 @@
-# CliniScribe AI - Complete Development Prompt for Cursor
+# ReasonMed - Complete Development Prompt for Cursor
 
 ## Project Overview
-Build **CliniScribe AI**, a medical clinical documentation assistant that helps doctors write clinical notes by retrieving similar cases and diagnostic reasoning patterns from a medical dataset. This RAG (Retrieval-Augmented Generation) application uses the FreedomIntelligence medical-o1-reasoning-SFT dataset.
+Build **ReasonMed**, a medical clinical documentation assistant that helps doctors write clinical notes by retrieving similar cases and diagnostic reasoning patterns from a medical dataset. This RAG (Retrieval-Augmented Generation) application uses the FreedomIntelligence medical-o1-reasoning-SFT dataset.
 
 ---
 
