@@ -1,0 +1,90 @@
+# CliniScribe AI - Complete Development Prompt for Cursor
+
+## Project Overview
+Build **CliniScribe AI**, a medical clinical documentation assistant that helps doctors write clinical notes by retrieving similar cases and diagnostic reasoning patterns from a medical dataset. This RAG (Retrieval-Augmented Generation) application uses the FreedomIntelligence medical-o1-reasoning-SFT dataset.
+
+---
+
+## Core Requirements
+
+### 1. Technology Stack
+- **Backend & Core Logic**: Python 3.10+
+- **Web Framework**: FastAPI for REST API
+- **Frontend**: Streamlit for rapid medical UI development (alternative: Gradio)
+- **Vector Database**: ChromaDB (embedded, no external service needed) or FAISS
+- **LLM**: OpenAI API (GPT-4 or GPT-3.5-turbo) - API key from `.env` file in root
+- **Embeddings**: OpenAI text-embedding-3-small model
+- **Data Source**: FreedomIntelligence/medical-o1-reasoning-SFT from HuggingFace
+- **Key Python Libraries**:
+  - `openai` - OpenAI API client
+  - `python-dotenv` - Environment variable management
+  - `chromadb` or `faiss-cpu` - Vector storage
+  - `datasets` - HuggingFace dataset loader
+  - `pandas` - Data manipulation
+  - `fastapi` + `uvicorn` - API framework
+  - `streamlit` - UI framework
+  - `langchain` or `llama-index` (optional) - RAG orchestration
+
+### 2. Environment Setup
+- Read OpenAI API key from `.env` file in project root
+- `.env` format: `OPENAI_API_KEY=sk-...`
+- Include `.env.example` file with placeholder
+- Add `.env` to `.gitignore`
+- Use `python-dotenv` to load environment variables
+
+### 3. Project Structure
+```
+reasonmed/
+├── .env                          # API keys (gitignored)
+├── .env.example                  # Template for environment variables
+├── .gitignore
+├── requirements.txt              # Python dependencies
+├── README.md
+├── data/
+│   ├── raw/                      # Original HuggingFace data
+│   └── processed/                # Processed embeddings/vectorstore
+├── src/
+│   ├── __init__.py
+│   ├── data_pipeline.py          # Data loading & processing
+│   ├── embeddings.py             # Embedding generation
+│   ├── vectorstore.py            # Vector database operations
+│   ├── retriever.py              # Similarity search logic
+│   ├── generator.py              # LLM response generation
+│   └── rag_pipeline.py           # Complete RAG workflow
+├── api/
+│   ├── __init__.py
+│   └── main.py                   # FastAPI endpoints
+├── app/
+│   └── streamlit_app.py          # Streamlit UI
+└── scripts/
+    ├── setup_vectorstore.py      # One-time setup script
+    └── test_rag.py               # Testing script
+```
+
+---
+
+## Phase 1: Data Pipeline & Vector Database Setup
+
+### Data Processing Requirements:
+1. **Download the dataset** from HuggingFace: `FreedomIntelligence/medical-o1-reasoning-SFT`
+   - Use the `datasets` library: `load_dataset("FreedomIntelligence/medical-o1-reasoning-SFT", "en")`
+   - Use the English subset (`en` or `en_mix`)
+   - Should contain ~20-25k medical Q&A examples
+
+2. **Data Structure** - Each record contains:
+   - `Question`: Medical case/scenario (string)
+   - `Complex_CoT`: Detailed chain-of-thought reasoning (string)
+   - `Response`: Final clinical answer (string)
+
+3. **Chunking Strategy**:
+   - Create embeddings for combined text to capture full context
+   - Format for embedding: `f"Case: {question}\n\nReasoning: {reasoning[:500]}...\n\nDiagnosis: {response}"`
+   - Store metadata for each chunk:
+     - `question_id`: Unique identifier
+     - `full_question`: Original question text
+     - `full_reasoning`: Complete reasoning chain
+     - `full_response`: Complete answer
+     - `medical_keywords`: Extracted key terms (symptoms, conditions, tests)
+
+
+
